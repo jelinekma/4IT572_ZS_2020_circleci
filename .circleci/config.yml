@@ -19,17 +19,17 @@ jobs:
       <<: *vse
       steps:
         - attach_workspace:
-          at: .
+            at: .
         - run:
-          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
+            command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
 workflows:
   version: 2.1
   build:
     jobs:
       - build
       - deploy:
-        requires:
-          - build
-        filters:
-          branches:
-            only: master
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
